@@ -15,7 +15,7 @@ import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
  * @since 0.1.0
  * 
  */
-public class BuildInfo {
+public final class BuildInfo {
 
     private static final long serialVersionUID = 1L;
 
@@ -157,9 +157,14 @@ public class BuildInfo {
         this.version = version;
     }
 
+    public static boolean hasProperties(Class referenceClass){
+        return referenceClass.getResourceAsStream("/" + BUILD_PROPERTIES_PATH) != null;
+    }
     /**
-     * Returns build info for diversicon maven packages.
+     * Returns build info for diversicon maven packages. If it can't load it,
+     * fails silently and returns an empty object.
      * 
+     * @see #hasProperties(Class)
      * @since 0.1.0
      */
     public static BuildInfo ofProperties(Class referenceClass) {
