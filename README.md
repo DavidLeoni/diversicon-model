@@ -13,7 +13,13 @@ Package with minimal dependencies to provide models for <a href="https://github.
 
 |**Usage**|**License**|**Roadmap**|**Contributing**|
 |-----------|---------|-----------|----------------|
-| See [docs](docs) |Business-friendly [Apache License v2.0](LICENSE.txt) | See [project milestones](../../milestones) | See [the wiki](../../wiki)|
+| See [docs](docs) |Business-friendly [Apache License v2.0](LICENSE.txt) | See [project milestones](../../milestones) | See [wiki](../../wiki)|
+
+
+#### Projects using Diversicon Model
+
+* [Diversicon](https://github.com/DavidLeoni/diversicon): Diversicon itself
+* [Diversicon Wordnet 3.1](https://github.com/DavidLeoni/diversicon-wordnet-3.1): Wordnet 3.1 packaged as Maven artifact.
 
 
 #### Credits
