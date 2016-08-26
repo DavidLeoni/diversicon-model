@@ -14,7 +14,7 @@ public class BuildInfoTest {
     
     @Test
     public void testGetBuildInfo(){
-        BuildInfo buildInfo = BuildInfo.ofProperties(this.getClass());
+        BuildInfo buildInfo = BuildInfo.of(this.getClass());
         LOG.debug("Version is " + buildInfo.getVersion());
         assertFalse(buildInfo.getVersion().isEmpty());
         

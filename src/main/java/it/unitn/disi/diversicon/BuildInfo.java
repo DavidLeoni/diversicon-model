@@ -10,7 +10,7 @@ import it.disi.unitn.diversicon.exceptions.DivIoException;
 import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
 
 /**
- * To retrieve build info, call {@link BuildInfo#ofProperties(Class)}
+ * To retrieve build info, call {@link BuildInfo#of(Class)}
  * 
  * @since 0.1.0
  * 
@@ -157,17 +157,22 @@ public final class BuildInfo {
         this.version = version;
     }
 
+    /**
+     * @since 0.1.0
+     */
     public static boolean hasProperties(Class referenceClass){
         return referenceClass.getResourceAsStream("/" + BUILD_PROPERTIES_PATH) != null;
     }
     /**
-     * Returns build info for diversicon maven packages. If it can't load it,
-     * fails silently and returns an empty object.
+     * Returns build info for diversicon maven packages. 
+     * In order for this to work there must be file {@link #BUILD_PROPERTIES_PATH} 
+     * in specified class resources. If not present, fails silently and returns an empty object. 
+     * 
      * 
      * @see #hasProperties(Class)
      * @since 0.1.0
      */
-    public static BuildInfo ofProperties(Class referenceClass) {
+    public static BuildInfo of(Class referenceClass) {
         try {
             InputStream stream = referenceClass.getResourceAsStream("/" + BUILD_PROPERTIES_PATH);
             Properties props = new Properties();

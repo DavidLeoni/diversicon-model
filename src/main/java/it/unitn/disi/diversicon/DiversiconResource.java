@@ -1,5 +1,6 @@
 package it.unitn.disi.diversicon;
 
+import javax.annotation.Nullable;
 
 /**
  * A Diversicon resource. To model a resource as a packaged maven artifact, 
@@ -10,28 +11,68 @@ package it.unitn.disi.diversicon;
  */
 public class DiversiconResource {
     
+    
     private String id;
     private String xmlUri;
     private String sqlUri;
-    private String h2DbUri;
+    private String h2DbUri;    
     private String version;
+    private String prefix;
+    private DiversiconResource sample;
 
     public DiversiconResource(){
         id = "";
+        prefix = "";        
         xmlUri = "";
         sqlUri = "";
         h2DbUri = "";
-        version = "";
+        version = "";        
+        sample = null;
     }
     
+    
     /**
-     * Short-hand id, i.e. {@code div-wn30}
+     * Returns a resource which is a much reduced sample of the this one. 
+     * If it doesn't exist returns null. 
+     * 
+     * @since 0.1.0
+     */
+    @Nullable
+    public DiversiconResource getSample() {
+        return sample;
+    }
+
+    
+    /**
+     * See {@link #getSample()}
+     * 
+     * @since 0.1.0
+     */
+    public void setSample(@Nullable DiversiconResource sample) {
+        this.sample = sample;
+    }
+
+
+    /**
+     * Worldwide unique id so for your resources, pick a reasonably long id. Diversicon well-known resources 
+     * might have a short id for convenience, i.e. {@code div-wn31}
      * 
      * @since 0.1.0
      */
     public String getId(){
         return id;
     }
+
+    /**
+     * Common short prefix ending with version and no colon, like {@code wn31}
+     * see <a href="https://www.w3.org/TR/2006/REC-xml-names11-20060816/#NT-Prefix" target="_blank">XML specs</a>, 
+     * 
+     * @since 0.1.0
+     */
+    public String getPrefix(){
+        return prefix;
+    }
+    
     
     /**
      * 
@@ -41,7 +82,7 @@ public class DiversiconResource {
      * 
      * If missing, the empty string is returned.
      *  
-     *  @since 0.1.0
+     * @since 0.1.0
      */    
     public String getXmlUri(){
         return xmlUri;
@@ -96,6 +137,7 @@ public class DiversiconResource {
 
     /**
      * See {@link #getXmlUri()}
+     * 
      * @since 0.1.0
      */    
     public void setXmlUri(String xmlUri) {
@@ -104,6 +146,7 @@ public class DiversiconResource {
 
     /**
      * See {@link #getSqlUri()}
+     * 
      * @since 0.1.0
      */    
     public void setSqlUri(String sqlUri) {
@@ -112,6 +155,7 @@ public class DiversiconResource {
 
     /**
      * See {@link #getH2DbUri()}
+     *
      * @since 0.1.0
      */   
     public void setH2DbUri(String h2DbUri) {
@@ -120,11 +164,19 @@ public class DiversiconResource {
 
     /**
      * See {@link #getVersion()}
+     * 
      * @since 0.1.0
      */
     public void setVersion(String version) {
         this.version = version;
     }
-    
-    
+
+    /**
+     * See {@link #getPrefix()}
+     * 
+     * @since 0.1.0
+     */
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
 }
