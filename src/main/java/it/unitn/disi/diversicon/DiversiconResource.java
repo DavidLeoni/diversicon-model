@@ -10,12 +10,11 @@ import javax.annotation.Nullable;
  * @since 0.1.0
  */
 public class DiversiconResource {
-    
-    
+        
     private String id;
     private String xmlUri;
     private String sqlUri;
-    private String h2DbUri;    
+    private String h2DbUri;
     private String version;
     private String prefix;
     private DiversiconResource sample;
@@ -64,8 +63,8 @@ public class DiversiconResource {
     }
 
     /**
-     * Common short prefix ending with version and no colon, like {@code wn31}
-     * see <a href="https://www.w3.org/TR/2006/REC-xml-names11-20060816/#NT-Prefix" target="_blank">XML specs</a>, 
+     * The default common short prefix to identify this resource, ending with no colon, 
+     * see <a href="https://www.w3.org/TR/2006/REC-xml-names11-20060816/#NT-Prefix" target="_blank">XML specs</a>,.     
      * 
      * @since 0.1.0
      */
