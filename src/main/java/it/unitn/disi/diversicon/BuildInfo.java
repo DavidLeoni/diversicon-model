@@ -28,6 +28,7 @@ public final class BuildInfo {
     private String buildJdk = "";
     private String builtBy = "";
     private String version = "";
+    private String website = "";
 
     /**
      * i.e. 1.0
@@ -158,6 +159,16 @@ public final class BuildInfo {
     }
 
     /**
+     * See {@link #getWebsite()}
+     * 
+     * @since 0.1.0
+     */
+    private void setWebsite(String website) {
+        this.website = website;
+    }
+    
+    
+    /**
      * @since 0.1.0
      */
     public static boolean hasProperties(Class referenceClass){
@@ -198,6 +209,7 @@ public final class BuildInfo {
             buildInfo.setScmUrl(props.getProperty("scm-url", ""));
             buildInfo.setTimestamp(props.getProperty("timestamp", ""));
             buildInfo.setVersion(props.getProperty("version", ""));
+            buildInfo.setWebsite(props.getProperty("website", ""));
             return buildInfo;
         } catch (Exception ex) {
             Logger.getLogger(referenceClass.getName())
@@ -206,5 +218,23 @@ public final class BuildInfo {
             return new BuildInfo();
         }
     }
+
+
+    /**
+     * @since 0.1.0
+     */
+    public String getWebsite() {
+        return website;
+    }
+    
+    /**
+     * Return Josman docs position at this version.
+     * 
+     * @since 0.1.0
+     */
+    public String docsAtVersion() {
+        return getWebsite() + "/" + getVersion();
+    }
+    
 
 }
