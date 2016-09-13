@@ -252,27 +252,24 @@ public class LexResPackage {
     /**
      * Returns a nice human-readable description  of the fields.
      * 
-     * {@inheritDoc}
-     * 
      * @since 0.1.0
      */
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("LexicalResourcePackage\n");
-        sb.append("          id=" + id + "\n");
-        sb.append("        name=" + name + "\n");        
-        sb.append("      prefix=" + prefix + "\n");        
-        sb.append("     version=" + version + "\n");        
-        sb.append("  namespaces=\n");
+        sb.append("LexicalResourcePackage:\n");
+        sb.append("  id           = " + id + "\n");
+        sb.append("  name         = " + name + "\n");        
+        sb.append("  prefix       = " + prefix + "\n");        
+        sb.append("  version      = " + version + "\n");        
+        sb.append("  namespaces   =\n");
         for (String prefix : namespaces.keySet()){
-        sb.append("    " + prefix + ":" + namespaces.get(prefix) + "\n");
-        }
+        sb.append("                 " + prefix + ":" + namespaces.get(prefix) + "\n");
+        }       
 
-        sb.append("       files=\n");
-        sb.append("        xmlUri="+xmlUri + "\n");
-        sb.append("  sampleXmlUri="+ sampleXmlUri + "\n");        
-        sb.append("        sqlUri="+ sqlUri + "\n");
-        sb.append("       h2DbUri=" + h2DbUri + "\n");               
+        sb.append("  sampleXmlUri = "+ sampleXmlUri + "\n");
+        sb.append("  xmlUri       = "+xmlUri + "\n");        
+        sb.append("  sqlUri       = "+ sqlUri + "\n");
+        sb.append("  h2DbUri      = " + h2DbUri + "\n");               
             
         return sb.toString();
     }
