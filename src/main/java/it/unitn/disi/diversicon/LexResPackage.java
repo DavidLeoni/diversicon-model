@@ -16,8 +16,8 @@ import javax.annotation.Nullable;
  */
 public class LexResPackage {
         
-    private String id;
     private String name;
+    private String label;
     private String xmlUri;
     private String sqlUri;
     private String h2DbUri;
@@ -30,8 +30,8 @@ public class LexResPackage {
      * @since 0.1.0
      */ 
     public LexResPackage(){
-        id = "";
         name = "";
+        label = "";
         prefix = "";        
         xmlUri = "";
         sqlUri = "";
@@ -68,25 +68,26 @@ public class LexResPackage {
      * Worldwide unique id so for your resources, pick a reasonably long id.
      * Diversicon well-known resources might have a short id for convenience, i.e. {@code div-wn31}
      * 
-     * @see #getName()
+     * @see #getLabel()
      * @see #getPrefix()
      * @since 0.1.0
      */
-    public String getId(){
-        return id;
+    public String getName(){
+        return name;
     }
 
     /**
-     * A descriptive name, like "Diversicon WordNet 3.1" 
+     * A descriptive name, like "Diversicon WordNet 3.1". It's usually extracted from 
+     * {@code GlobalInformation} object.
      * 
-     * @see #getId()
+     * @see #getName()
      * @see #getPrefix()
      * 
      * @since 0.1.0
      */
     @Nullable
-    public String getName() {
-        return name;
+    public String getLabel() {
+        return label;
     }    
     
     /**
@@ -94,7 +95,7 @@ public class LexResPackage {
      * see <a href="https://www.w3.org/TR/2006/REC-xml-names11-20060816/#NT-Prefix" target="_blank">XML specs</a>.     
      *
      * @see #getId()
-     * @see #getName()
+     * @see #getLabel()
      * 
      * @since 0.1.0
      */
@@ -158,21 +159,21 @@ public class LexResPackage {
     }
     
     /**
-     * See {@link #getId()}
-     * 
-     * @since 0.1.0
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
      * See {@link #getName()}
      * 
      * @since 0.1.0
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * See {@link #getLabel()}
+     * 
+     * @since 0.1.0
+     */
+    public void setLabel(String label) {
+        this.label = label;
     }
     
     
@@ -257,8 +258,8 @@ public class LexResPackage {
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("LexicalResourcePackage:\n");
-        sb.append("  id           = " + id + "\n");
-        sb.append("  name         = " + name + "\n");        
+        sb.append("  id           = " + name + "\n");
+        sb.append("  label        = " + label + "\n");        
         sb.append("  prefix       = " + prefix + "\n");        
         sb.append("  version      = " + version + "\n");        
         sb.append("  namespaces   =\n");
@@ -283,8 +284,8 @@ public class LexResPackage {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((h2DbUri == null) ? 0 : h2DbUri.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((label == null) ? 0 : label.hashCode());
         result = prime * result + ((namespaces == null) ? 0 : namespaces.hashCode());
         result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
         result = prime * result + ((sampleXmlUri == null) ? 0 : sampleXmlUri.hashCode());
@@ -312,15 +313,15 @@ public class LexResPackage {
                 return false;
         } else if (!h2DbUri.equals(other.h2DbUri))
             return false;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
         if (name == null) {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
+            return false;
+        if (label == null) {
+            if (other.label != null)
+                return false;
+        } else if (!label.equals(other.label))
             return false;
         if (namespaces == null) {
             if (other.namespaces != null)

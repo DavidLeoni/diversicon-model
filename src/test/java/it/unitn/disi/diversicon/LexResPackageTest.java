@@ -38,9 +38,9 @@ public class LexResPackageTest {
      */    
     public static LexResPackage makePack(){
         LexResPackage pack = new LexResPackage();
-        
-        pack.setId("my-id");
-        pack.setName("my name");
+                
+        pack.setName("my-name");
+        pack.setLabel("my label");
         Map<String,String> ns = new HashMap<>();
         ns.put("a", "u");
         ns.put("b", "w");
