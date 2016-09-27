@@ -9,6 +9,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
+import org.junit.Assert;
+
 /**
  * @since 0.1.0
  */
@@ -64,4 +67,32 @@ public class LexResPackageTest {
         assertEquals(makePack(), makePack());
     }
     
+    /**
+     * @since 0.1.0
+     */
+    @Test
+    public void testNamespace(){
+
+        try {
+            LexResPackage pack = new LexResPackage();
+            pack.namespace();
+            Assert.fail("Shouldn't arrive here!");
+        } catch (DivNotFoundException ex){
+            
+        }
+        
+        try {
+            LexResPackage pack = new LexResPackage();
+            pack.setPrefix("a");
+            pack.namespace();
+            Assert.fail("Shouldn't arrive here!");
+        } catch (DivNotFoundException ex){
+            
+        }
+        
+        LexResPackage pack = new LexResPackage();
+        pack.setPrefix("a");
+        pack.putNamespace("a", "b");
+        assertEquals("b", pack.namespace());
+    }
 }

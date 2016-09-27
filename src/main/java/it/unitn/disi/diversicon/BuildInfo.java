@@ -2,6 +2,7 @@ package it.unitn.disi.diversicon;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,8 @@ public final class BuildInfo {
     private String buildJdk = "";
     private String builtBy = "";
     private String version = "";
-    private String website = "";
+    private String serverWebsite = "";
+    private String manualWebsite = "";
 
     /**
      * i.e. 1.0
@@ -84,6 +86,7 @@ public final class BuildInfo {
     public String getScmUrl() {
         return scmUrl;
     }
+        
 
     /**
      * Returns the timestamp, i.e. 1421246376174
@@ -159,12 +162,21 @@ public final class BuildInfo {
     }
 
     /**
-     * See {@link #getWebsite()}
+     * See {@link #getServerWebsite()}
      * 
      * @since 0.1.0
      */
-    private void setWebsite(String website) {
-        this.website = website;
+    public void setServerWebsite(String website) {
+        this.serverWebsite = website;
+    }
+    
+    /**
+     * See {@link #getManualWebsite()}
+     * 
+     * @since 0.1.0
+     */
+    public void setManualWebsite(String website) {
+        this.manualWebsite = website;
     }
     
     
@@ -209,7 +221,8 @@ public final class BuildInfo {
             buildInfo.setScmUrl(props.getProperty("scm-url", ""));
             buildInfo.setTimestamp(props.getProperty("timestamp", ""));
             buildInfo.setVersion(props.getProperty("version", ""));
-            buildInfo.setWebsite(props.getProperty("website", ""));
+            buildInfo.setServerWebsite(props.getProperty("server-website", ""));
+            buildInfo.setManualWebsite(props.getProperty("manual-website", ""));
             return buildInfo;
         } catch (Exception ex) {
             Logger.getLogger(referenceClass.getName())
@@ -221,11 +234,22 @@ public final class BuildInfo {
 
 
     /**
+     * The website of the main instance of the program (i.e. http://diversicon-db.com)
+     * 
      * @since 0.1.0
      */
-    public String getWebsite() {
-        return website;
+    public String getServerWebsite() {
+        return serverWebsite;
     }
+    
+    /**
+     * The website of the manual of the program (i.e. http://diversicon-db.com/manual)
+     * 
+     * @since 0.1.0
+     */
+    public String getManualWebsite() {
+        return manualWebsite;
+    }    
     
     /**
      * Return Josman docs position at this version.
@@ -233,8 +257,51 @@ public final class BuildInfo {
      * @since 0.1.0
      */
     public String docsAtVersion() {
-        return getWebsite() + "/" + getVersion();
+        return getManualWebsite() + "/" + getVersion();
     }
     
+    /**
+     * Returns the url to the github source file at version, 
+     * like https://github.com/DavidLeoni/diversicon/blob/0.1.0/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+     *  
+     * @since 0.1.0
+     */    
+    public String sourceAtVersion(String path) {
+        Objects.requireNonNull(path);
+        
+        String sep;
+        
+        if (path.startsWith("/") || path.isEmpty() ){            
+            sep = "";
+        } else {
+            sep = "/";
+        } 
+        
+        // https://github.com/DavidLeoni/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+        return getScmUrl() + "/blob/" + getVersion() + sep + path;
+    }
 
+    /**
+     * <p>Generates a human-readable </p> 
+     * 
+     * {@inheritDoc}
+     * 
+     * @since 0.1.0
+     */
+    @Override
+    public String toString() {
+        return "BuildInfo: "
+                + "\n  timestamp=" + timestamp
+                + "\n  scmUrl=" + scmUrl 
+                + "\n  gitSha=" + gitSha 
+                + "\n  createdBy="+ createdBy
+                + "\n  buildJdk=" + buildJdk
+                + "\n  builtBy=" + builtBy
+                + "\n  version=" + version
+                + "\n  serverWebsite=" + serverWebsite 
+                + "\n  manualWebsite=" + manualWebsite ;
+    }
+    
+    
+    
 }

@@ -7,6 +7,8 @@ import java.util.Objects;
 
 import javax.annotation.Nullable;
 
+import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
+
 /**
  * A Diversicon lexical resource packaged with metadata. To model a resource as a packaged maven artifact, 
  * you can extend this class and create a singleton like 
@@ -18,11 +20,12 @@ public class LexResPackage {
         
     private String name;
     private String label;
+    private String prefix;
     private String xmlUri;
     private String sqlUri;
     private String h2DbUri;
     private String version;
-    private String prefix;
+    
     private String sampleXmlUri;    
     private Map<String, String> namespaces;
 
@@ -258,7 +261,7 @@ public class LexResPackage {
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("LexicalResourcePackage:\n");
-        sb.append("  id           = " + name + "\n");
+        sb.append("  name         = " + name + "\n");
         sb.append("  label        = " + label + "\n");        
         sb.append("  prefix       = " + prefix + "\n");        
         sb.append("  version      = " + version + "\n");        
@@ -356,5 +359,22 @@ public class LexResPackage {
         return true;
     }
     
+    /**
+     * Returns the namespace associated to this package
+     * 
+     * @throws DivNotFoundException if there is no namespace associated to {@link #getPrefix() prefix}
+     * 
+     *  @since 0.1.0
+     */
+    public String namespace(){
+        if (prefix == null || prefix.isEmpty()){
+            throw new DivNotFoundException("Couldn't find the prefix!");
+        }
+        String ret = namespaces.get(prefix);
+        if (ret == null || ret.isEmpty()){
+            throw new DivNotFoundException("Couldn't find the namespace!");
+        }
+        return ret;
+    }
     
 }
