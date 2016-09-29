@@ -2,10 +2,15 @@ package it.unitn.disi.diversicon;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.annotation.Nullable;
 
 import it.disi.unitn.diversicon.exceptions.DivIoException;
 import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
@@ -189,15 +194,45 @@ public final class BuildInfo {
     /**
      * Returns build info for diversicon maven packages. 
      * In order for this to work there must be file {@link #BUILD_PROPERTIES_PATH} 
-     * in specified class resources. If not present, fails silently and returns an empty object. 
+     * in specified class resources. If not present, logs an error and returns an empty object. 
      * 
      * 
      * @see #hasProperties(Class)
      * @since 0.1.0
-     */
-    public static BuildInfo of(Class referenceClass) {
+     */    
+    // todo implementation tries to work dev time but it's rough  
+    public static BuildInfo of(Class referenceClass) {               
+        
         try {
-            InputStream stream = referenceClass.getResourceAsStream("/" + BUILD_PROPERTIES_PATH);
+           
+            String className = referenceClass.getSimpleName() + ".class";
+            String classPath = referenceClass.getResource(className).toString();
+            
+            @Nullable 
+            InputStream stream = null;
+            
+            if (classPath.startsWith("jar")) {
+                String propPath = classPath.substring(0, classPath.lastIndexOf("!") + 1) + 
+                        "/" + BUILD_PROPERTIES_PATH;                    
+                stream = new URL(propPath).openStream();                
+            } else {
+                Enumeration<URL> resources = referenceClass.getClassLoader()
+                        .getResources( BUILD_PROPERTIES_PATH);
+                      while (resources.hasMoreElements()) {
+                          
+                          try {
+                            URL url = resources.nextElement();            
+                            String prefix = greatestCommonPrefix(classPath, url.toString());
+                            if (prefix.endsWith("target/classes/")){
+                                stream = url.openStream();
+                                break;
+                            }                            
+                          } catch (IOException e) {
+                              throw new DivIoException("Error while searching " + BUILD_PROPERTIES_PATH, e);
+                          }
+                      }
+            }
+                                                       
             Properties props = new Properties();
             if (stream == null) {
                 throw new DivNotFoundException("Couldn't find " + BUILD_PROPERTIES_PATH
@@ -225,14 +260,28 @@ public final class BuildInfo {
             buildInfo.setManualWebsite(props.getProperty("manual-website", ""));
             return buildInfo;
         } catch (Exception ex) {
+            
             Logger.getLogger(referenceClass.getName())
-                  .log(Level.SEVERE,
-                          "COULD NOT LOAD BUILD INFORMATION! DEFAULTING TO EMPTY BUILD INFO!", ex);
+            .log(Level.SEVERE,
+                          "COULD NOT LOAD BUILD INFORMATION " + BUILD_PROPERTIES_PATH + " FOR CLASS "
+                     + referenceClass.getName() + "! DEFAULTING TO EMPTY BUILD INFO!", ex);
             return new BuildInfo();
         }
     }
 
-
+    /**
+     * @since 0.1.0
+     */
+    private static String greatestCommonPrefix(String a, String b) {
+        int minLength = Math.min(a.length(), b.length());
+        for (int i = 0; i < minLength; i++) {
+            if (a.charAt(i) != b.charAt(i)) {
+                return a.substring(0, i);
+            }
+        }
+        return a.substring(0, minLength);
+    }
+    
     /**
      * The website of the main instance of the program (i.e. http://diversicon-db.com)
      * 
@@ -281,6 +330,35 @@ public final class BuildInfo {
         return getScmUrl() + "/blob/" + getVersion() + sep + path;
     }
 
+    /**
+     * Returns the url to the github source file at tag, i.e. if version is 'master', could return
+     * this 
+     * like https://github.com/DavidLeoni/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+     *  
+     * @throws IllegalArgumentException 
+     *  
+     * @since 0.1.0
+     */    
+    public String sourceAtTag(String tag, String path) {
+        Objects.requireNonNull(path);
+        Objects.requireNonNull(tag);
+        if (tag.trim().isEmpty()){
+            throw new IllegalArgumentException("Provided tag is blank!");
+        }
+        
+        String sep;
+        
+        if (path.startsWith("/") || path.isEmpty() ){            
+            sep = "";
+        } else {
+            sep = "/";
+        } 
+        
+        // https://github.com/DavidLeoni/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+        return getScmUrl() + "/blob/" + tag + sep + path;
+    }
+    
+    
     /**
      * <p>Generates a human-readable </p> 
      * 
