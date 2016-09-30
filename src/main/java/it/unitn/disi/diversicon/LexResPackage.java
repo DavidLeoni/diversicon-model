@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import javax.annotation.Nullable;
 
-import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
+import it.unitn.disi.diversicon.exceptions.DivNotFoundException;
 
 /**
  * A Diversicon lexical resource packaged with metadata. To model a resource as a packaged maven artifact, 

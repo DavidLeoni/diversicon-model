@@ -114,7 +114,10 @@
 			<artifactId>annotations</artifactId>
 		</dependency>
 
-
+		<dependency>
+			<groupId>it.unitn.disi</groupId>
+			<artifactId>div-wn31-model</artifactId>		
+		</dependency>
 
 		<!-- ****************** TEST DEPENDENCIES ****************** -->
 

@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.Nullable;
 
-import it.disi.unitn.diversicon.exceptions.DivIoException;
-import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
+import it.unitn.disi.diversicon.exceptions.DivIoException;
+import it.unitn.disi.diversicon.exceptions.DivNotFoundException;
 
 /**
  * To retrieve build info, call {@link BuildInfo#of(Class)}
@@ -34,7 +34,8 @@ public final class BuildInfo {
     private String buildJdk = "";
     private String builtBy = "";
     private String version = "";
-    private String serverWebsite = "";
+    private String server = "";
+    private String devServer = "";
     private String manualWebsite = "";
 
     /**
@@ -167,17 +168,27 @@ public final class BuildInfo {
     }
 
     /**
-     * See {@link #getServerWebsite()}
+     * See {@link #getServer()}
      * 
      * @since 0.1.0
      */
-    public void setServerWebsite(String website) {
-        this.serverWebsite = website;
+    public void setServer(String server) {
+        this.server = server;
     }
+ 
+    /**
+     * See {@link #getDevServer()}
+     * 
+     * @since 0.1.0
+     */
+    public void setDevServer(String devServer) {
+        this.devServer = devServer;
+    }
+     
     
     /**
      * See {@link #getManualWebsite()}
-     * 
+     * s
      * @since 0.1.0
      */
     public void setManualWebsite(String website) {
@@ -208,6 +219,8 @@ public final class BuildInfo {
             String className = referenceClass.getSimpleName() + ".class";
             String classPath = referenceClass.getResource(className).toString();
             
+            System.out.println("classPath = "  + classPath);
+            
             @Nullable 
             InputStream stream = null;
             
@@ -221,9 +234,14 @@ public final class BuildInfo {
                       while (resources.hasMoreElements()) {
                           
                           try {
-                            URL url = resources.nextElement();            
+                            URL url = resources.nextElement();
+                            System.out.println("url = "  + url);
                             String prefix = greatestCommonPrefix(classPath, url.toString());
-                            if (prefix.endsWith("target/classes/")){
+                            
+                            System.out.println("prefix = "  + prefix);
+                            if (prefix.endsWith("target/test-classes/")
+                                    || prefix.endsWith("target/classes/")
+                                    || prefix.endsWith("target/")){
                                 stream = url.openStream();
                                 break;
                             }                            
@@ -256,7 +274,8 @@ public final class BuildInfo {
             buildInfo.setScmUrl(props.getProperty("scm-url", ""));
             buildInfo.setTimestamp(props.getProperty("timestamp", ""));
             buildInfo.setVersion(props.getProperty("version", ""));
-            buildInfo.setServerWebsite(props.getProperty("server-website", ""));
+            buildInfo.setServer(props.getProperty("server", ""));
+            buildInfo.setDevServer(props.getProperty("dev-server", ""));
             buildInfo.setManualWebsite(props.getProperty("manual-website", ""));
             return buildInfo;
         } catch (Exception ex) {
@@ -283,12 +302,22 @@ public final class BuildInfo {
     }
     
     /**
-     * The website of the main instance of the program (i.e. http://diversicon-db.com)
+     * The main instance of the program (i.e. http://diversicon-kb.org)
      * 
      * @since 0.1.0
      */
-    public String getServerWebsite() {
-        return serverWebsite;
+    public String getServer() {
+        return server;
+    }
+    
+    
+    /**
+     * The development instance of the program (i.e. http://dev.diversicon-kb.org)
+     * 
+     * @since 0.1.0
+     */
+    public String getDevServer() {
+        return devServer;
     }
     
     /**
@@ -376,7 +405,7 @@ public final class BuildInfo {
                 + "\n  buildJdk=" + buildJdk
                 + "\n  builtBy=" + builtBy
                 + "\n  version=" + version
-                + "\n  serverWebsite=" + serverWebsite 
+                + "\n  serverWebsite=" + server 
                 + "\n  manualWebsite=" + manualWebsite ;
     }
     

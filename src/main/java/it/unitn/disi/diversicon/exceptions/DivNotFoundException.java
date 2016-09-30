@@ -1,4 +1,4 @@
-package it.disi.unitn.diversicon.exceptions;
+package it.unitn.disi.diversicon.exceptions;
 
 /**
  * A runtime exception to raise when something is not found.

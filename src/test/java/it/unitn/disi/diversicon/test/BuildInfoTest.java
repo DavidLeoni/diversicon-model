@@ -1,10 +1,12 @@
-package it.unitn.disi.diversicon;
+package it.unitn.disi.diversicon.test;
 
 import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import it.unitn.disi.diversicon.BuildInfo;
 
 
 /**
@@ -28,11 +30,14 @@ public class BuildInfoTest {
         assertFalse(buildInfo.getBuiltBy().isEmpty());
         assertFalse(buildInfo.getCreatedBy().isEmpty());
         assertFalse(buildInfo.getGitSha().isEmpty());
+        assertFalse(buildInfo.getServer().isEmpty());
+        assertFalse(buildInfo.getDevServer().isEmpty());
         assertFalse(buildInfo.getManualWebsite().isEmpty());
         assertFalse(buildInfo.getScmUrl().isEmpty());
-        assertFalse(buildInfo.getServerWebsite().isEmpty());
+        assertFalse(buildInfo.getServer().isEmpty());
         assertFalse(buildInfo.getTimestamp().isEmpty());
         assertFalse(buildInfo.getVersion().isEmpty());
+        
     }
     
     /**

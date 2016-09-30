@@ -1,4 +1,4 @@
-package it.unitn.disi.diversicon;
+package it.unitn.disi.diversicon.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,7 +9,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import it.disi.unitn.diversicon.exceptions.DivNotFoundException;
+import it.unitn.disi.diversicon.LexResPackage;
+import it.unitn.disi.diversicon.exceptions.DivNotFoundException;
+
 import org.junit.Assert;
 
 /**
