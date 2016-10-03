@@ -677,11 +677,11 @@ generator	http://www.isocat.org/datcat/DC-2511
 
 <!ELEMENT MetaData EMPTY>
 <!ATTLIST MetaData	id ID #REQUIRED
-					creationDate CDATA #IMPLIED
-					creationTool CDATA #IMPLIED
-					version CDATA #IMPLIED
+					creationDate CDATA #REQUIRED
+					creationTool CDATA #REQUIRED
+					version CDATA #REQUIRED
 					creationProcess CDATA #REQUIRED	
-					automatic CDATA #IMPLIED>
+					automatic CDATA #REQUIRED>
     
 <!ELEMENT SemanticLabel (MonolingualExternalRef*)>
 <!ATTLIST SemanticLabel 

@@ -1189,11 +1189,11 @@
   <xs:element name="MetaData">
     <xs:complexType>
       <xs:attribute name="id" use="required" type="xs:ID"/>
-      <xs:attribute name="creationDate"/>
-      <xs:attribute name="creationTool"/>
-      <xs:attribute name="version"/>
+      <xs:attribute name="creationDate" use="required"/>
+      <xs:attribute name="creationTool" use="required"/>
+      <xs:attribute name="version" use="required"/>
       <xs:attribute name="creationProcess" use="required"/>
-      <xs:attribute name="automatic"/>
+      <xs:attribute name="automatic" use="required"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="SemanticLabel">
