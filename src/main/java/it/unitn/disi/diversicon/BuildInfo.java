@@ -219,7 +219,7 @@ public final class BuildInfo {
             String className = referenceClass.getSimpleName() + ".class";
             String classPath = referenceClass.getResource(className).toString();
             
-            System.out.println("classPath = "  + classPath);
+            //System.out.println("classPath = "  + classPath);
             
             @Nullable 
             InputStream stream = null;
@@ -235,10 +235,10 @@ public final class BuildInfo {
                           
                           try {
                             URL url = resources.nextElement();
-                            System.out.println("url = "  + url);
+                            //System.out.println("url = "  + url);
                             String prefix = greatestCommonPrefix(classPath, url.toString());
                             
-                            System.out.println("prefix = "  + prefix);
+                            //System.out.println("prefix = "  + prefix);
                             if (prefix.endsWith("target/test-classes/")
                                     || prefix.endsWith("target/classes/")
                                     || prefix.endsWith("target/")){

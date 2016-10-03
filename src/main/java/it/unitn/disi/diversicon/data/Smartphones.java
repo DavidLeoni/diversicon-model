@@ -79,8 +79,11 @@ public class Smartphones extends LexResPackage {
         if (BuildInfo.hasProperties(Smartphones.class)){
             BuildInfo buildInfo = BuildInfo.of(Smartphones.class);            
             INSTANCE.setVersion(buildInfo.getVersion());
-            INSTANCE.putNamespace(PREFIX, buildInfo.sourceAtTag("master", "src/main/resources/" + SHORT_NAME + ".xml") );  
-            INSTANCE.putNamespace(DivWn31.PREFIX, DivWn31.of().namespace());
+            INSTANCE.putNamespace(PREFIX, buildInfo.sourceAtTag("master", "src/main/resources/" + SHORT_NAME + ".xml") );
+            
+            // can't because of dep cycle!
+            // INSTANCE.putNamespace(DivWn31.PREFIX, DivWn31.of().namespace());
+            INSTANCE.putNamespace("wn31", "https://github.com/DavidLeoni/diversicon-wordnet-3.1");
         } else {            
             throw new IllegalStateException("Couldn't find properties file " + BuildInfo.BUILD_PROPERTIES_PATH + " for class " + Smartphones.class.getCanonicalName());
         }

@@ -25,149 +25,14 @@
 
 <!--
 
-Changes made in Diversicon:
+Main changes made to DTD in Diversicon:
 
 * changed all (foo|baz|...) forms into (foo,baz,...) 
 * removed initial ?xml tag,  because a DTD is not an xml file (at most a DTD can be embedded inside
   an xml, see https://en.wikipedia.org/wiki/Document_type_definition#Examples
-* removed backlinks, they were all #REQUIRED  
-  
-* LexicalResource:
-  converted elements list from
-   	(SenseAxis*|PredicateArgumentAxis*|MetaData*|Lexicon+)>
- 	to  (GlobalInformation, MetaData*, Lexicon+, SenseAxis*, PredicateArgumentAxis*)>
-  removed 
-  - attribute GlobalInformationId
-  
-  added    TODO REVIEW!!
-  - id ID #REQUIRED
-  - prefix CDATA #REQUIRED
-  modified  TODO REVIEW!!
-  - name from ID to CDATA
+* removed backlinks
 
-* GlobalInformation
-  removed
-  - id ID #REQUIRED
-
-* Lexicon
-  modified
-  - converted elements list from  
-    (LexicalEntry+|SubcategorizationFrame*|SubcategorizationFrameSet*|SemanticPredicate*|Synset*|SynSemCorrespondence*)
-  to
-    (LexicalEntry+,Synset*,SubcategorizationFrame*,SubcategorizationFrameSet*,SemanticPredicate*,SynSemCorrespondence*)
-  removed 
-  - LexicalResourceId IDREF #REQUIRED
-  
-  renamed
-  - lexiconName -> name
-
-* LexicalEntry
-  removed
-  - lexiconId IDREF #REQUIRED
-
-* Metadata
-  modified
-  - renamed metadataId to id
-  - set creationProcess from IDREF to CDATA 
-
-* Sense
-  - converted elements list from  
-	(Sense|Context|PredicativeRepresentation|SenseExample
-	|Definition|SenseRelation|Equivalent|MonolingualExternalRef
-	|Frequency|SemanticLabel)*
-  to
-	(Definition*, SenseExample*, MonolingualExternalRef*, Frequency*, 
-	 Context*,PredicativeRepresentation*,SenseRelation*,Equivalent*,
-	 SemanticLabel*, Sense*)
-
-
-  removed
-  - lexicalEntryId IDREF #REQUIRED
-  	
-* FormRepresentation
-  removed
-  - backlink lemmaId IDREF #REQUIRED
-  - backlink relatedFormId IDREF #REQUIRED
-  
-* Lemma
-  modified
-  - id  from #REQUIRED to #IMPLIED
-  
-* Synset
-  removed
-  - lexiconId IDREF #REQUIRED
-
-* Definition
-  modified
-  - id 	from #REQUIRED to #IMPLIED
-
-* TextRepresentation
-  modified
-  - id 	from #REQUIRED to #IMPLIED
-
-* WordForm
-  modified
-  - id 	from #REQUIRED to #IMPLIED
-  removed
-  - backlink lexicalEntryId IDREF #REQUIRED	  
-
-* SubcategorizationFrame
-  removed redundant id  
- 
-* SynsetRelation
-  removed 	
-  - id ID #REQUIRED
-  - synsetId  IDREF #REQUIRED
-  modified
-  - set relName from #IMPLIED to #REQUIRED
-  
-* SemanticArgument
-
-* Definition
-
-  removed 
-  - backlinks:
-		synsetId IDREF #IMPLIED
-		semanticArgumentId IDREF #IMPLIED
-		semanticPredicateId IDREF #IMPLIED
- 
-* TextRepresentation
-  removed 
-  -backlinks: 
-  		definitionId IDREF #IMPLIED
-    	senseExampleId IDREF #IMPLIED
-    	contextId IDREF #IMPLIED 
-
-* MonolingualExternalRef
-  removed 
-  - backlinks  
-    senseId      IDREF #IMPLIED
-    contextId      IDREF #IMPLIED
-    SynsetId      IDREF #IMPLIED
-  
-* SenseRelation
-	removed
-	- backlinks 
-		  senseId IDREF #REQUIRED  
-
-* Frequency
-	removed
-	- backlinks  
-	    semanticArgumentId IDREF #IMPLIED
-	    senseRelationId IDREF #IMPLIED
-	    semanticPredicateId IDREF #IMPLIED
-	    senseId IDREF #IMPLIED
-	    lexicalEntryId IDREF #IMPLIED
-	    wordFormId IDREF #IMPLIED
-	    syntacticArgumentId IDREF #IMPLIED
-
-* SemanticLabel
-	removed
-	- backlinks
-		semanticArgumentId IDREF #IMPLIED
-	    semanticPredicateId IDREF #IMPLIED
-	    senseId IDREF #IMPLIED  
-  
+For a full list of changes, see github issue: https://github.com/DavidLeoni/diversicon/issues/15  
 -->
 
 
@@ -268,7 +133,7 @@ affixSuffix					http://www.isocat.org/datcat/DC-1395
 separableParticle 	http://www.isocat.org/datcat/DC-3546
 -->            
 
-<!ELEMENT LexicalResource (GlobalInformation, MetaData*, Lexicon+, SenseAxis*, PredicateArgumentAxis*)>
+<!ELEMENT LexicalResource (GlobalInformation, MetaData, Lexicon+, SenseAxis*, PredicateArgumentAxis*)>
 <!ATTLIST LexicalResource	name ID #REQUIRED							
 							prefix CDATA #REQUIRED
     						dtdVersion CDATA #IMPLIED>
@@ -408,8 +273,8 @@ orthographyName 	http://www.isocat.org/datcat/
 
 <!ELEMENT RelatedForm (FormRepresentation*)>
 <!ATTLIST RelatedForm
-	id ID #REQUIRED 
-    targetLexicalEntryId      CDATA #REQUIRED
+	id ID #IMPLIED 
+    targetLexicalEntry      CDATA #REQUIRED
     targetSense CDATA #IMPLIED
     relType (etymology|compound|compoundRoot|derivative|derivationBase|derivationBaseNoun|derivationBaseVerb|derivationBaseAdj|derivationBaseVerbAdj|loanWord|supports) #IMPLIED>
 <!--
@@ -533,8 +398,7 @@ postpositiveAdjective	http://www.isocat.org/datcat/DC-4619
     lexeme CDATA  #IMPLIED
     verbForm (toInfinitive|bareInfinitive|participle|ingForm) #IMPLIED
     tense (present|past) #IMPLIED
-    complementizer (thatType|whType|yesNoType) #IMPLIED
-    subcategorizationFrameId CDATA #REQUIRED>
+    complementizer (thatType|whType|yesNoType) #IMPLIED>
 <!--
 optional	http://www.isocat.org/datcat/DC-4622
 
@@ -625,13 +489,12 @@ SubcategorizationFrameSet	http://www.isocat.org/datcat/DC-4620
 predicate	http://www.isocat.org/datcat/DC-3415
 --> 
    
-<!ELEMENT SemanticPredicate (Definition+, SemanticArgument*, PredicateRelation*, Frequency*, SemanticLabel*)>
+<!ELEMENT SemanticPredicate (Definition*, SemanticArgument*, PredicateRelation*, Frequency*, SemanticLabel*)>
 <!ATTLIST SemanticPredicate
     id                      ID #REQUIRED
     label CDATA #IMPLIED
     lexicalized (yes|no) #IMPLIED 
-    perspectivalized (yes|no) #IMPLIED
-    lexiconId CDATA #REQUIRED>
+    perspectivalized (yes|no) #IMPLIED>
 <!--
 label	http://www.isocat.org/datcat/DC-1857
 lexicalized 	http://www.isocat.org/datcat/DC-3295
@@ -643,8 +506,7 @@ perspectivalized 	http://www.isocat.org/datcat/DC-4391
     id                      ID #REQUIRED
     semanticRole  CDATA #IMPLIED
     isIncorporated (yes|no) #IMPLIED
-    coreType (core|peripheral|coreUnexpressed|extraThematic) #IMPLIED
-    semanticPredicateId  CDATA #REQUIRED>
+    coreType (core|peripheral|coreUnexpressed|extraThematic) #IMPLIED>
 <!--
 semanticRole	http://www.isocat.org/datcat/DC-3466
 isIncorporated 	http://www.isocat.org/datcat/DC-4151
@@ -671,22 +533,20 @@ relType	http://www.isocat.org/datcat/DC-1971
     
 <!ELEMENT SynSemCorrespondence (SynSemArgMap*)>
 <!ATTLIST SynSemCorrespondence
-    id              ID #REQUIRED
-    lexiconId  CDATA #REQUIRED>
+    id              ID #REQUIRED>
     
 <!ELEMENT SynSemArgMap EMPTY>
 <!ATTLIST SynSemArgMap
-	id              ID #REQUIRED
+	id              ID #IMPLIED
     syntacticArgument	CDATA #REQUIRED
-    semanticArgument	CDATA #REQUIRED
-    synSemCorrespondenceId	CDATA #REQUIRED>
+    semanticArgument	CDATA #REQUIRED>
     
 
 <!ELEMENT PredicateRelation EMPTY>
 <!ATTLIST PredicateRelation
 	id              ID #REQUIRED
     target         CDATA #IMPLIED
-    semanticPredicateId CDATA #REQUIRED  
+    relevantSemanticPredicate CDATA #REQUIRED  
     relType    CDATA #IMPLIED
     relName  CDATA #IMPLIED>
 <!--
@@ -699,8 +559,7 @@ relevantSemanticPredicate 	http://www.isocat.org/datcat/DC-4392
     
 <!ELEMENT SenseExample (TextRepresentation*)>
 <!ATTLIST SenseExample
-    id	ID #REQUIRED
-    senseId CDATA #REQUIRED
+    id	ID #REQUIRED    
     exampleType (subcatFrame|syntacticUsage|senseInstance|idiomaticExpression|other) #IMPLIED>
 <!--
 subcatFrame	http://www.isocat.org/datcat/DC-4630

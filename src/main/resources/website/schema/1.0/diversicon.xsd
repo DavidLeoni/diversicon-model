@@ -1,5 +1,5 @@
 <!-- 
-       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-09-26
+       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-10-03
        DO *NOT* EDIT DIRECTLY.
        FOR CHANGES MADE TO ORIGINAL UBY DTD AND COPYRIGHT, SEE BELOW 
 
@@ -30,149 +30,14 @@
 -->
 <!--
   
-  Changes made in Diversicon:
+  Main changes made to DTD in Diversicon:
   
   * changed all (foo|baz|...) forms into (foo,baz,...) 
   * removed initial ?xml tag,  because a DTD is not an xml file (at most a DTD can be embedded inside
     an xml, see https://en.wikipedia.org/wiki/Document_type_definition#Examples
-  * removed backlinks, they were all #REQUIRED  
+  * removed backlinks
   
-  * LexicalResource:
-    converted elements list from
-  	(SenseAxis*|PredicateArgumentAxis*|MetaData*|Lexicon+)>
-  	to  (GlobalInformation, MetaData*, Lexicon+, SenseAxis*, PredicateArgumentAxis*)>
-    removed 
-    - attribute GlobalInformationId
-  
-    added    TODO REVIEW!!
-    - id ID #REQUIRED
-    - prefix CDATA #REQUIRED
-    modified  TODO REVIEW!!
-    - name from ID to CDATA
-  
-  * GlobalInformation
-    removed
-    - id ID #REQUIRED
-  
-  * Lexicon
-    modified
-    - converted elements list from  
-      (LexicalEntry+|SubcategorizationFrame*|SubcategorizationFrameSet*|SemanticPredicate*|Synset*|SynSemCorrespondence*)
-    to
-      (LexicalEntry+,Synset*,SubcategorizationFrame*,SubcategorizationFrameSet*,SemanticPredicate*,SynSemCorrespondence*)
-    removed 
-    - LexicalResourceId IDREF #REQUIRED
-  
-    renamed
-    - lexiconName -> name
-  
-  * LexicalEntry
-    removed
-    - lexiconId IDREF #REQUIRED
-  
-  * Metadata
-    modified
-    - renamed metadataId to id
-    - set creationProcess from IDREF to CDATA 
-  
-  * Sense
-    - converted elements list from  
-  	(Sense|Context|PredicativeRepresentation|SenseExample
-  	|Definition|SenseRelation|Equivalent|MonolingualExternalRef
-  	|Frequency|SemanticLabel)*
-    to
-  	(Definition*, SenseExample*, MonolingualExternalRef*, Frequency*, 
-  	 Context*,PredicativeRepresentation*,SenseRelation*,Equivalent*,
-  	 SemanticLabel*, Sense*)
-  
-  
-    removed
-    - lexicalEntryId IDREF #REQUIRED
-  
-  * FormRepresentation
-    removed
-    - backlink lemmaId IDREF #REQUIRED
-    - backlink relatedFormId IDREF #REQUIRED
-  
-  * Lemma
-    modified
-    - id  from #REQUIRED to #IMPLIED
-  
-  * Synset
-    removed
-    - lexiconId IDREF #REQUIRED
-  
-  * Definition
-    modified
-    - id 	from #REQUIRED to #IMPLIED
-  
-  * TextRepresentation
-    modified
-    - id 	from #REQUIRED to #IMPLIED
-  
-  * WordForm
-    modified
-    - id 	from #REQUIRED to #IMPLIED
-    removed
-    - backlink lexicalEntryId IDREF #REQUIRED	  
-  
-  * SubcategorizationFrame
-    removed redundant id  
-  
-  * SynsetRelation
-    removed 	
-    - id ID #REQUIRED
-    - synsetId  IDREF #REQUIRED
-    modified
-    - set relName from #IMPLIED to #REQUIRED
-  
-  * SemanticArgument
-  
-  * Definition
-  
-    removed 
-    - backlinks:
-  		synsetId IDREF #IMPLIED
-  		semanticArgumentId IDREF #IMPLIED
-  		semanticPredicateId IDREF #IMPLIED
-  
-  * TextRepresentation
-    removed 
-    -backlinks: 
-  		definitionId IDREF #IMPLIED
-  	senseExampleId IDREF #IMPLIED
-  	contextId IDREF #IMPLIED 
-  
-  * MonolingualExternalRef
-    removed 
-    - backlinks  
-      senseId      IDREF #IMPLIED
-      contextId      IDREF #IMPLIED
-      SynsetId      IDREF #IMPLIED
-  
-  * SenseRelation
-  	removed
-  	- backlinks 
-  		  senseId IDREF #REQUIRED  
-  
-  * Frequency
-  	removed
-  	- backlinks  
-  	    semanticArgumentId IDREF #IMPLIED
-  	    senseRelationId IDREF #IMPLIED
-  	    semanticPredicateId IDREF #IMPLIED
-  	    senseId IDREF #IMPLIED
-  	    lexicalEntryId IDREF #IMPLIED
-  	    wordFormId IDREF #IMPLIED
-  	    syntacticArgumentId IDREF #IMPLIED
-  
-  * SemanticLabel
-  	removed
-  	- backlinks
-  		semanticArgumentId IDREF #IMPLIED
-  	    semanticPredicateId IDREF #IMPLIED
-  	    senseId IDREF #IMPLIED  
-  
+  For a full list of changes, see github issue: https://github.com/DavidLeoni/diversicon/issues/15  
 -->
 <!-- #################### Core package -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" vc:minVersion="1.1">
@@ -359,7 +224,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="GlobalInformation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="MetaData"/>
+        <xs:element ref="MetaData"/>
         <xs:element maxOccurs="unbounded" ref="Lexicon"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="SenseAxis"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="PredicateArgumentAxis"/>
@@ -656,8 +521,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="FormRepresentation"/>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:ID"/>
-      <xs:attribute name="targetLexicalEntryId" use="required"/>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targetLexicalEntry" use="required"/>
       <xs:attribute name="targetSense"/>
       <xs:attribute name="relType">
         <xs:simpleType>
@@ -932,7 +797,6 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="subcategorizationFrameId" use="required"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -1031,7 +895,7 @@
   <xs:element name="SemanticPredicate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="Definition"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Definition"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="SemanticArgument"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="PredicateRelation"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
@@ -1055,7 +919,6 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="lexiconId" use="required"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -1091,7 +954,6 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="semanticPredicateId" use="required"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -1124,22 +986,20 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="SynSemArgMap"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
-      <xs:attribute name="lexiconId" use="required"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="SynSemArgMap">
     <xs:complexType>
-      <xs:attribute name="id" use="required" type="xs:ID"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attribute name="syntacticArgument" use="required"/>
       <xs:attribute name="semanticArgument" use="required"/>
-      <xs:attribute name="synSemCorrespondenceId" use="required"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="PredicateRelation">
     <xs:complexType>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="target"/>
-      <xs:attribute name="semanticPredicateId" use="required"/>
+      <xs:attribute name="relevantSemanticPredicate" use="required"/>
       <xs:attribute name="relType"/>
       <xs:attribute name="relName"/>
     </xs:complexType>
@@ -1157,7 +1017,6 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="TextRepresentation"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
-      <xs:attribute name="senseId" use="required"/>
       <xs:attribute name="exampleType">
         <xs:simpleType>
           <xs:restriction base="xs:token">
