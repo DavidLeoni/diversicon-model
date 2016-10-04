@@ -1,5 +1,5 @@
 <!-- 
-       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-10-03
+       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-10-04
        DO *NOT* EDIT DIRECTLY.
        FOR CHANGES MADE TO ORIGINAL UBY DTD AND COPYRIGHT, SEE BELOW 
 
@@ -1091,10 +1091,9 @@
   <xs:element name="SenseRelation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="FormRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="FormRepresentation"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="target"/>
       <xs:attribute name="relName" use="required"/>
       <xs:attribute name="relType">

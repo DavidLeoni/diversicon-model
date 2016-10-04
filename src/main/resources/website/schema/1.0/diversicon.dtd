@@ -599,9 +599,8 @@ externalSystem	http://www.isocat.org/datcat/DC-1974
 externalReference	http://www.isocat.org/datcat/DC-1975
 --> 
 
-<!ELEMENT SenseRelation (FormRepresentation, Frequency*)>
+<!ELEMENT SenseRelation (FormRepresentation*, Frequency*)>
 <!ATTLIST SenseRelation
-	id ID #REQUIRED
     target      CDATA #IMPLIED
     relName CDATA #REQUIRED
     relType  (taxonomic|partWhole|association|complementary|translation) #IMPLIED>
