@@ -341,7 +341,7 @@ usage               http://www.isocat.org/datcat/DC-3764
 <!ELEMENT SyntacticBehaviour EMPTY>
 <!ATTLIST SyntacticBehaviour
     id					ID #REQUIRED
-    senseId				CDATA #IMPLIED
+    sense				CDATA #IMPLIED
     subcategorizationFrame	CDATA #IMPLIED
     subcategorizationFrameSet	CDATA #IMPLIED>
 <!--
@@ -481,10 +481,8 @@ SubcategorizationFrameSet	http://www.isocat.org/datcat/DC-4620
 
             <!--#################### Package for Semantics -->
 <!ELEMENT PredicativeRepresentation EMPTY>
-<!ATTLIST PredicativeRepresentation
-	id               ID #REQUIRED
-   predicate              CDATA #REQUIRED
-   senseId             CDATA #REQUIRED>
+<!ATTLIST PredicativeRepresentation	
+   predicate              CDATA #REQUIRED>
 <!--
 predicate	http://www.isocat.org/datcat/DC-3415
 --> 
@@ -544,7 +542,6 @@ relType	http://www.isocat.org/datcat/DC-1971
 
 <!ELEMENT PredicateRelation EMPTY>
 <!ATTLIST PredicateRelation
-	id              ID #REQUIRED
     target         CDATA #IMPLIED
     relevantSemanticPredicate CDATA #REQUIRED  
     relType    CDATA #IMPLIED

@@ -637,7 +637,7 @@
   <xs:element name="SyntacticBehaviour">
     <xs:complexType>
       <xs:attribute name="id" use="required" type="xs:ID"/>
-      <xs:attribute name="senseId"/>
+      <xs:attribute name="sense"/>
       <xs:attribute name="subcategorizationFrame"/>
       <xs:attribute name="subcategorizationFrameSet"/>
     </xs:complexType>
@@ -886,9 +886,7 @@
   <!-- #################### Package for Semantics -->
   <xs:element name="PredicativeRepresentation">
     <xs:complexType>
-      <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="predicate" use="required"/>
-      <xs:attribute name="senseId" use="required"/>
     </xs:complexType>
   </xs:element>
   <!-- predicate	http://www.isocat.org/datcat/DC-3415 -->
@@ -997,7 +995,6 @@
   </xs:element>
   <xs:element name="PredicateRelation">
     <xs:complexType>
-      <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="target"/>
       <xs:attribute name="relevantSemanticPredicate" use="required"/>
       <xs:attribute name="relType"/>
