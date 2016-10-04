@@ -302,7 +302,7 @@ public final class BuildInfo {
     }
     
     /**
-     * The main instance of the program (i.e. http://diversicon-kb.org)
+     * The main instance of the program (i.e. http://diversicon-kb.eu)
      * 
      * @since 0.1.0
      */
@@ -312,7 +312,7 @@ public final class BuildInfo {
     
     
     /**
-     * The development instance of the program (i.e. http://dev.diversicon-kb.org)
+     * The development instance of the program (i.e. http://dev.diversicon-kb.eu)
      * 
      * @since 0.1.0
      */
