@@ -63,7 +63,7 @@ public class LexResPackage {
      * @since 0.1.0
      */
     public void setSampleXmlUri(String sampleXmlUri) {
-        this.xmlUri = sampleXmlUri;
+        this.sampleXmlUri = sampleXmlUri;
     }
 
 
