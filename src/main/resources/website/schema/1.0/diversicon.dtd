@@ -169,7 +169,6 @@ transparentMeaning 	http://www.isocat.org/datcat/DC-4390
 Statement	http://www.isocat.org/datcat/DC-382
 --> 
 <!ATTLIST Statement
-	id     ID #REQUIRED
 	definition CDATA #IMPLIED
     statementType (usageNote|encyclopedicInformation|etymology|backgroundText|externalReference) #IMPLIED>
 <!--

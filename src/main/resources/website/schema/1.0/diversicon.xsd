@@ -1,5 +1,5 @@
 <!-- 
-       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-10-10
+       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-10-18
        DO *NOT* EDIT DIRECTLY.
        FOR CHANGES MADE TO ORIGINAL UBY DTD AND COPYRIGHT, SEE BELOW 
 
@@ -286,7 +286,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:TextRepresentation"/>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="definition"/>
       <xs:attribute name="statementType">
         <xs:simpleType>
