@@ -40,7 +40,7 @@
   For a full list of changes, see github issue: https://github.com/DavidLeoni/diversicon/issues/15  
 -->
 <!-- #################### Core package -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:schema="http://diversicon-kb.eu/schema/1" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" targetNamespace="http://diversicon-kb.eu/schema/1" vc:minVersion="1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" vc:minVersion="1.0">
   <xs:annotation>
     <xs:documentation xml:lang="en">
 	     	XML Schema for Diversicon LMF XMLs
@@ -56,8 +56,8 @@
   <xs:element name="Definition">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Statement"/>
-        <xs:element maxOccurs="unbounded" ref="schema:TextRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Statement"/>
+        <xs:element maxOccurs="unbounded" ref="TextRepresentation"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
       <xs:attribute name="definitionType">
@@ -86,13 +86,13 @@
   <xs:element name="LexicalEntry">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="schema:Lemma"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:WordForm"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:RelatedForm"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Sense"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SyntacticBehaviour"/>
-        <xs:element minOccurs="0" ref="schema:ListOfComponents"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
+        <xs:element ref="Lemma"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="WordForm"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="RelatedForm"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Sense"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SyntacticBehaviour"/>
+        <xs:element minOccurs="0" ref="ListOfComponents"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="partOfSpeech" use="required">
@@ -220,11 +220,11 @@
   <xs:element name="LexicalResource">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="schema:GlobalInformation"/>
-        <xs:element ref="schema:MetaData"/>
-        <xs:element maxOccurs="unbounded" ref="schema:Lexicon"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SenseAxis"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:PredicateArgumentAxis"/>
+        <xs:element ref="GlobalInformation"/>
+        <xs:element ref="MetaData"/>
+        <xs:element maxOccurs="unbounded" ref="Lexicon"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SenseAxis"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="PredicateArgumentAxis"/>
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:ID"/>
       <xs:attribute name="prefix" use="required"/>
@@ -234,12 +234,12 @@
   <xs:element name="Lexicon">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="schema:LexicalEntry"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Synset"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SubcategorizationFrame"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SubcategorizationFrameSet"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SemanticPredicate"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SynSemCorrespondence"/>
+        <xs:element maxOccurs="unbounded" ref="LexicalEntry"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Synset"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SubcategorizationFrame"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SubcategorizationFrameSet"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SemanticPredicate"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SynSemCorrespondence"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="name"/>
@@ -250,16 +250,16 @@
   <xs:element name="Sense">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Definition"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SenseExample"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:MonolingualExternalRef"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Context"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:PredicativeRepresentation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SenseRelation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Equivalent"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SemanticLabel"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Sense"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Definition"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SenseExample"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="MonolingualExternalRef"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Context"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="PredicativeRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SenseRelation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Equivalent"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SemanticLabel"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Sense"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="index"/>
@@ -284,7 +284,7 @@
   <xs:element name="Statement">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:TextRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="TextRepresentation"/>
       </xs:sequence>
       <xs:attribute name="definition"/>
       <xs:attribute name="statementType">
@@ -327,7 +327,7 @@
   <xs:element name="Lemma">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="schema:FormRepresentation"/>
+        <xs:element maxOccurs="unbounded" ref="FormRepresentation"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
     </xs:complexType>
@@ -336,8 +336,8 @@
   <xs:element name="WordForm">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="schema:FormRepresentation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
+        <xs:element maxOccurs="unbounded" ref="FormRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
       <xs:attribute name="grammaticalNumber">
@@ -470,7 +470,7 @@
   <xs:element name="RelatedForm">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:FormRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="FormRepresentation"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
       <xs:attribute name="targetLexicalEntry" use="required"/>
@@ -509,7 +509,7 @@
   <xs:element name="ListOfComponents">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="schema:Component"/>
+        <xs:element maxOccurs="unbounded" ref="Component"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -546,8 +546,8 @@
   <xs:element name="Context">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:TextRepresentation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:MonolingualExternalRef"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="TextRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="MonolingualExternalRef"/>
       </xs:sequence>
       <xs:attribute name="contextType">
         <xs:simpleType>
@@ -597,9 +597,9 @@
   <xs:element name="SubcategorizationFrame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" ref="schema:LexemeProperty"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SyntacticArgument"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
+        <xs:element minOccurs="0" ref="LexemeProperty"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SyntacticArgument"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="parentSubcatFrame"/>
@@ -650,7 +650,7 @@
   <xs:element name="SyntacticArgument">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="optional">
@@ -810,8 +810,8 @@
   <xs:element name="SubcategorizationFrameSet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SubcatFrameSetElement"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SynArgMap"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SubcatFrameSetElement"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SynArgMap"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="name"/>
@@ -844,11 +844,11 @@
   <xs:element name="SemanticPredicate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Definition"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SemanticArgument"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:PredicateRelation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SemanticLabel"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Definition"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SemanticArgument"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="PredicateRelation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SemanticLabel"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="label"/>
@@ -878,10 +878,10 @@
   <xs:element name="SemanticArgument">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:ArgumentRelation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SemanticLabel"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Definition"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ArgumentRelation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SemanticLabel"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Definition"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="semanticRole"/>
@@ -932,7 +932,7 @@
   <xs:element name="SynSemCorrespondence">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SynSemArgMap"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SynSemArgMap"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
     </xs:complexType>
@@ -962,7 +962,7 @@
   <xs:element name="SenseExample">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:TextRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="TextRepresentation"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="exampleType">
@@ -987,9 +987,9 @@
   <xs:element name="Synset">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Definition"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:MonolingualExternalRef"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:SynsetRelation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Definition"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="MonolingualExternalRef"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SynsetRelation"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:ID"/>
     </xs:complexType>
@@ -997,7 +997,7 @@
   <xs:element name="SynsetRelation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
       <xs:attribute name="target" use="required"/>
       <xs:attribute name="relName" use="required"/>
@@ -1039,8 +1039,8 @@
   <xs:element name="SenseRelation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:FormRepresentation"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:Frequency"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="FormRepresentation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Frequency"/>
       </xs:sequence>
       <xs:attribute name="target"/>
       <xs:attribute name="relName" use="required"/>
@@ -1087,7 +1087,7 @@
   <xs:element name="SenseAxis">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="schema:SenseAxisRelation"/>
+        <xs:element maxOccurs="unbounded" ref="SenseAxisRelation"/>
       </xs:sequence>
       <xs:attribute name="senseAxisId" use="required" type="xs:ID"/>
       <xs:attribute name="senseAxisType"/>
@@ -1146,7 +1146,7 @@
   <xs:element name="SemanticLabel">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:MonolingualExternalRef"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="MonolingualExternalRef"/>
       </xs:sequence>
       <xs:attribute name="label"/>
       <xs:attribute name="type"/>

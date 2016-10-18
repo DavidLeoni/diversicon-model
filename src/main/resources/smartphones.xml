@@ -32,11 +32,9 @@
 				 prefix="sm"				 
   				 xmlns:sm="https://github.com/DavidLeoni/diversicon-model/blob/master/src/main/resources/smartphones.xml"
   				 xmlns:wn31="https://github.com/DavidLeoni/diversicon-wordnet-3.1"
-				 
-				 xmlns="http://diversicon-kb.eu/schema/1"				 
+				 				 				 
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://diversicon-kb.eu/schema/1
-									 http://diversicon-kb.eu/schema/1.0/diversicon.xsd">
+				 xsi:noNamespaceSchemaLocation="http://diversicon-kb.eu/schema/1.0/diversicon.xsd">
                  	
     <GlobalInformation label="Smartphones terminology"/>       
     
