@@ -361,8 +361,7 @@ subcatLabel	http://www.isocat.org/datcat/DC-1857
 <!ATTLIST LexemeProperty
     auxiliary (haben|sein) #IMPLIED
     syntacticProperty (subjectControl|objectControl|subjectRaising|objectRaising|
-    nonPredicativeAdjective|predicativeAdjective|postpositiveAdjective) #IMPLIED
-    subcategorizationFrameId CDATA #REQUIRED>
+    nonPredicativeAdjective|predicativeAdjective|postpositiveAdjective) #IMPLIED>
 <!--
 auxiliary	http://www.isocat.org/datcat/DC-1244
 haben 	http://www.isocat.org/datcat/DC-1299

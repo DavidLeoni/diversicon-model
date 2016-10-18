@@ -630,7 +630,6 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="subcategorizationFrameId" use="required"/>
     </xs:complexType>
   </xs:element>
   <!--
