@@ -1,4 +1,4 @@
-package it.unitn.disi.diversicon.exceptions;
+package eu.kidf.diversicon.core.exceptions;
 
 
 /**

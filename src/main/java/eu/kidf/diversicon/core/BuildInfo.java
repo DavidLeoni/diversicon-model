@@ -1,4 +1,4 @@
-package it.unitn.disi.diversicon;
+package eu.kidf.diversicon.core;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.Nullable;
 
-import it.unitn.disi.diversicon.exceptions.DivIoException;
-import it.unitn.disi.diversicon.exceptions.DivNotFoundException;
+import eu.kidf.diversicon.core.exceptions.DivIoException;
+import eu.kidf.diversicon.core.exceptions.DivNotFoundException;
 
 /**
  * To retrieve build info, call {@link BuildInfo#of(Class)}
@@ -340,7 +340,7 @@ public final class BuildInfo {
     
     /**
      * Returns the url to the github source file at version, 
-     * like https://github.com/DavidLeoni/diversicon/blob/0.1.0/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+     * like https://github.com/diversicon-kb/diversicon/blob/0.1.0/src/main/java/it/unitn/disi/diversicon/DbInfo.java
      *  
      * @since 0.1.0
      */    
@@ -355,14 +355,14 @@ public final class BuildInfo {
             sep = "/";
         } 
         
-        // https://github.com/DavidLeoni/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+        // https://github.com/diversicon-kb/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
         return getScmUrl() + "/blob/" + getVersion() + sep + path;
     }
 
     /**
      * Returns the url to the github source file at tag, i.e. if version is 'master', could return
      * this 
-     * like https://github.com/DavidLeoni/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+     * like https://github.com/diversicon-kb/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
      *  
      * @throws IllegalArgumentException 
      *  
@@ -383,7 +383,7 @@ public final class BuildInfo {
             sep = "/";
         } 
         
-        // https://github.com/DavidLeoni/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
+        // https://github.com/diversicon-kb/diversicon/blob/master/src/main/java/it/unitn/disi/diversicon/DbInfo.java
         return getScmUrl() + "/blob/" + tag + sep + path;
     }
     

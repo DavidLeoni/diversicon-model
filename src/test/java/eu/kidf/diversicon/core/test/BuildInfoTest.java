@@ -1,4 +1,4 @@
-package it.unitn.disi.diversicon.test;
+package eu.kidf.diversicon.core.test;
 
 import static org.junit.Assert.assertFalse;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import it.unitn.disi.diversicon.BuildInfo;
+import eu.kidf.diversicon.core.BuildInfo;
 
 
 /**

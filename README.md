@@ -8,7 +8,7 @@ RELEASE DOCS ARE ON THE <a href="http://davidleoni.github.io/diversicon/" target
 
 #### About
 
-Package with minimal dependencies to provide models for <a href="https://github.com/DavidLeoni/diversicon" target="_blank">Diversicon project</a>
+Package with minimal dependencies to provide models for <a href="https://github.com/diversicon-kb/diversicon" target="_blank">Diversicon project</a>
 
 
 |**Usage**|**License**|**Roadmap**|**Contributing**|
@@ -18,8 +18,8 @@ Package with minimal dependencies to provide models for <a href="https://github.
 
 #### Projects using Diversicon Model
 
-* [Diversicon](https://github.com/DavidLeoni/diversicon): Diversicon itself
-* [Diversicon Wordnet 3.1](https://github.com/DavidLeoni/diversicon-wordnet-3.1): Wordnet 3.1 packaged as Maven artifact.
+* [Diversicon](https://github.com/diversicon-kb/diversicon): Diversicon itself
+* [Diversicon Wordnet 3.1](https://github.com/diversicon-kb/diversicon-wordnet-3.1): Wordnet 3.1 packaged as Maven artifact.
 
 
 #### Credits

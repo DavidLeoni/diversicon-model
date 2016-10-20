@@ -1,4 +1,4 @@
-package it.unitn.disi.diversicon;
+package eu.kidf.diversicon.core;
 
 import java.io.File;
 import java.util.HashMap;
@@ -7,12 +7,12 @@ import java.util.Objects;
 
 import javax.annotation.Nullable;
 
-import it.unitn.disi.diversicon.exceptions.DivNotFoundException;
+import eu.kidf.diversicon.core.exceptions.DivNotFoundException;
 
 /**
  * A Diversicon lexical resource packaged with metadata. To model a resource as a packaged maven artifact, 
  * you can extend this class and create a singleton like 
- * in <a href="https://github.com/DavidLeoni/diversicon-wordnet-3.1" href="_target">DivWn31</a>.  
+ * in <a href="https://github.com/diversicon-kb/diversicon-wordnet-3.1" href="_target">DivWn31</a>.  
  * 
  * @since 0.1.0
  */
