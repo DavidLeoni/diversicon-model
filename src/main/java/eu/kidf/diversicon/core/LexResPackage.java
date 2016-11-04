@@ -71,6 +71,10 @@ public class LexResPackage {
      * Worldwide unique id so for your resources, pick a reasonably long id.
      * Diversicon well-known resources might have a short id for convenience, i.e. {@code div-wn31}
      * 
+     * <p>
+     * Note: it is called 'name' because Uby uses 'name' as lexical resource id. 
+     * </p>
+     * 
      * @see #getLabel()
      * @see #getPrefix()
      * @since 0.1.0

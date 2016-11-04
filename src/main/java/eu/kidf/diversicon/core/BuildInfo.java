@@ -389,7 +389,7 @@ public final class BuildInfo {
     
     
     /**
-     * <p>Generates a human-readable </p> 
+     * <p>Generates a human-readable description of the build info </p> 
      * 
      * {@inheritDoc}
      * 
