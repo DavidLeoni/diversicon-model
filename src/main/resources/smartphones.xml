@@ -61,7 +61,7 @@
                 					writtenForm="smartphone"/>
             </Lemma>
             <Sense id="sm_s-smartphone" 
-            	   synset="sm_ss-phablet">
+            	   synset="sm_ss-smartphone">
                 <MonolingualExternalRef externalSystem="smartphones-encyclopedia" 
                 						externalReference="3rd row, fourth column in CSV"/>
             </Sense>
@@ -99,8 +99,8 @@
                 <FormRepresentation languageIdentifier="eng"
                 				    writtenForm="phoneborg"/>
             </Lemma>
-            <Sense id="sm_s-phoneborg" index="1" 
-            						   synset="sm_ss-phoneborg">
+            <Sense id="sm_s-phoneborg" 
+				   synset="sm_ss-phoneborg">
                 <MonolingualExternalRef externalSystem="smartphones-encyclopedia" 
                 						externalReference="1st row 3rd column in csv of origin"/>
             </Sense>
