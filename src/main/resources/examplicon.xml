@@ -62,7 +62,7 @@
             <MonolingualExternalRef externalSystem="cars" 
               						externalReference="7st row 2rd column in csv of origin"/>
               						
-            <SynsetRelation target="wn31_ss-n2961779" 
+            <SynsetRelation target="wn31_ss_n2961779" 
             				relType="taxonomic" 
             				relName="hypernym"/>            				
             				

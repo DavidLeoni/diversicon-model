@@ -120,7 +120,7 @@
             	 http://wordnetweb.princeton.edu/perl/webwn?s=cellphone
             	 which is defined in an external file
             -->
-            <SynsetRelation target="wn31_ss-n2995984" 
+            <SynsetRelation target="wn31_ss_n2995984" 
             				relType="taxonomic" 
             				relName="hypernym"/>
 
@@ -151,7 +151,7 @@
 			<MonolingualExternalRef externalSystem="smartphones-encyclopedia" 
                					   externalReference="8st row 3rd column in csv of origin"/>
             			           
-            <SynsetRelation target="wn31_ss-n3086983" 
+            <SynsetRelation target="wn31_ss_n3086983" 
             				relType="taxonomic" 
             				relName="hypernym"/>
         </Synset>

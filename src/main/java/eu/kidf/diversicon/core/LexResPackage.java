@@ -150,7 +150,7 @@ public class LexResPackage {
     }
     
     /**
-     * Should follow <a href="http://semver.org" target="_blank"> semantic versioning </a> rules
+     * The version according to <a href="http://semver.org" target="_blank"> semantic versioning </a> rules
      * i.e. 1.1.0, 2.3.0-SNAPSHOT, ...
      * 
      * If missing, an empty string is returned.
