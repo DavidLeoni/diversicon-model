@@ -22,38 +22,38 @@
     		  />    
 
 
-    <Lexicon id="ex_lex-eng"
+    <Lexicon id="ex_lex_eng"
     		 languageIdentifier="eng" 
     		 name="Examplicon English lexicon">
     		 
-        <LexicalEntry id="ex_le-electric-car" 
+        <LexicalEntry id="ex_le_electric-car" 
         			  partOfSpeech="noun">
             <Lemma>
                 <FormRepresentation languageIdentifier="eng" 
                 					writtenForm="electric car"/>
             </Lemma>
-            <Sense id="ex_s-electric-car" 
-            	   synset="ex_ss-electric-car">
+            <Sense id="ex_s_electric-car" 
+            	   synset="ex_ss_electric-car">
                 <MonolingualExternalRef externalSystem="cars" 
                 						externalReference="3rd row, fourth column in CSV"/>
             </Sense>
         </LexicalEntry>
 
-		<LexicalEntry id="ex_le-tesla-car" 
+		<LexicalEntry id="ex_le_tesla-car" 
         			  partOfSpeech="noun">
             <Lemma>
                 <FormRepresentation languageIdentifier="eng" 
                 					writtenForm="tesla car"/>
             </Lemma>
-            <Sense id="ex_s-tesla-car" 
-            	   synset="ex_ss-tesla-car">
+            <Sense id="ex_s_tesla-car" 
+            	   synset="ex_ss_tesla-car">
                 <MonolingualExternalRef externalSystem="cars" 
                 						externalReference="3rd row, fourth column in CSV"/>
             </Sense>
         </LexicalEntry>
 
 		        
-		<Synset id="ex_ss-electric-car">
+		<Synset id="ex_ss_electric-car">
             <Definition>
                 <TextRepresentation languageIdentifier="eng" 
                 					writtenText="A car that doesn't poison you."/>
@@ -68,7 +68,7 @@
             				
         </Synset>
         
-        <Synset id="ex_ss-tesla-car">
+        <Synset id="ex_ss_tesla-car">
             <Definition>
                 <TextRepresentation languageIdentifier="eng" 
                 					writtenText="A car from Tesla Motors company."/>
@@ -76,12 +76,12 @@
             <MonolingualExternalRef externalSystem="cars" 
               						externalReference="7st row 2rd column in csv of origin"/>
               						
-            <SynsetRelation target="ex_ss-electric-car"
+            <SynsetRelation target="ex_ss_electric-car"
             				relType="taxonomic" 
             				relName="hypernym"/>
         </Synset>        
                 
-	</Lexicon>	
+    </Lexicon>	
 	
 			  	  
 </LexicalResource>
