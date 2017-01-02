@@ -6,7 +6,8 @@
 	name="div-upper"		
 	prefix="div"	
 	xmlns:div="https://github.com/diversicon-kb/diversicon-model/blob/master/src/main/resources/div-upper.xml"
-		 
+	xmlns:wn31="https://github.com/diversicon-kb/diversicon-wordnet-3.1"
+	
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://diversicon-kb.eu/schema/1.0/diversicon.xsd">
 
