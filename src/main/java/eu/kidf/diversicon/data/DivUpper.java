@@ -1,5 +1,8 @@
 package eu.kidf.diversicon.data;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import eu.kidf.diversicon.core.BuildInfo;
@@ -12,6 +15,14 @@ import eu.kidf.diversicon.core.LexResPackage;
  *
  */
 public class DivUpper extends LexResPackage {
+
+    /**
+     * 
+     * Synset id of the root of all domains, as specified in DivUpper lexical resource 
+     *
+     * @since 0.1.0
+     */
+    public static final String SYNSET_ROOT_DOMAIN = "div_ss_n_domain";
 
     
     /**
@@ -81,6 +92,7 @@ public class DivUpper extends LexResPackage {
     public static DivUpper of(){
         return INSTANCE;
     }
+   
 
    
 }

@@ -9,8 +9,8 @@
 	xmlns:wn31="https://github.com/diversicon-kb/diversicon-wordnet-3.1"
 	
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://diversicon-kb.eu/schema/1.0/diversicon.xsd">
-
+	xsi:noNamespaceSchemaLocation="http://diversicon-kb.eu/schema/1.0/diversicon.xsd">	
+	
 	<GlobalInformation label="Diversicon Upper Lexical Resource"></GlobalInformation>
 
     <MetaData id="div_md"
