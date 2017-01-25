@@ -24,16 +24,11 @@ public class DivUpper extends LexResPackage {
      */
     public static final String SYNSET_ROOT_DOMAIN = "div_ss_n_domain";
 
-    
+       
     /**
      * @since 0.1.0
      */
-    public static final String SHORT_NAME = "upper";
-    
-    /**
-     * @since 0.1.0
-     */
-    public static final String NAME = "div-" + SHORT_NAME;
+    public static final String NAME = "div-upper";
     
     /**
      * 
@@ -79,7 +74,7 @@ public class DivUpper extends LexResPackage {
         if (BuildInfo.hasProperties(DivUpper.class)){
             BuildInfo buildInfo = BuildInfo.of(DivUpper.class);
             INSTANCE.setVersion(buildInfo.getVersion());
-            INSTANCE.putNamespace(PREFIX, buildInfo.sourceAtTag("master", "src/main/resources/" + SHORT_NAME + ".xml") );
+            INSTANCE.putNamespace(PREFIX, buildInfo.sourceAtTag("master", "src/main/resources/" + NAME + ".xml") );
         } else {            
             throw new IllegalStateException("Couldn't find properties file " + BuildInfo.BUILD_PROPERTIES_PATH + " for class " + DivUpper.class.getCanonicalName());
         }        
