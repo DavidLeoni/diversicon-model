@@ -50,7 +50,12 @@ public class DivUpper extends LexResPackage {
     /**
      * @since 0.1.0
      */
-    public static final String XML_URI = CLASSPATH + ".xml";    
+    public static final String XML_URI = CLASSPATH + ".xml";  
+    
+    /**
+     * @since 0.1.0
+     */    
+    public static final String LEXICON_ENG = "div_lex_eng";
     
     /**
      * @since 0.1.0
@@ -88,8 +93,7 @@ public class DivUpper extends LexResPackage {
         return INSTANCE;
     }
    
-
-   
+       
 }
 
 
