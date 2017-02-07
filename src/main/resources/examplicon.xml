@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Complex example of an LMF file, containing all possible tags -->
+<!-- Complex example of an LMF file, containing all possible tags we support in Diversicon -->
 
 <LexicalResource
 	name="div-examplicon"		
@@ -11,7 +11,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://diversicon-kb.eu/schema/1.0/diversicon.xsd">
 
-	<GlobalInformation label="The Examplicon"></GlobalInformation>
+	<GlobalInformation label="The Examplicon"/>
 
     <MetaData id="ex_md"
     		  creationDate="2016-09-26"
@@ -22,38 +22,38 @@
     		  />    
 
 
-    <Lexicon id="ex_lex-eng"
+    <Lexicon id="ex_lex_eng"
     		 languageIdentifier="eng" 
     		 name="Examplicon English lexicon">
     		 
-        <LexicalEntry id="ex_le-electric-car" 
+        <LexicalEntry id="ex_le_electric-car" 
         			  partOfSpeech="noun">
             <Lemma>
                 <FormRepresentation languageIdentifier="eng" 
                 					writtenForm="electric car"/>
             </Lemma>
-            <Sense id="ex_s-electric-car" 
-            	   synset="ex_ss-electric-car">
+            <Sense id="ex_s_electric-car" 
+            	   synset="ex_ss_electric-car">
                 <MonolingualExternalRef externalSystem="cars" 
                 						externalReference="3rd row, fourth column in CSV"/>
             </Sense>
         </LexicalEntry>
 
-		<LexicalEntry id="ex_le-tesla-car" 
+		<LexicalEntry id="ex_le_tesla-car" 
         			  partOfSpeech="noun">
             <Lemma>
                 <FormRepresentation languageIdentifier="eng" 
                 					writtenForm="tesla car"/>
             </Lemma>
-            <Sense id="ex_s-tesla-car" 
-            	   synset="ex_ss-tesla-car">
+            <Sense id="ex_s_tesla-car" 
+            	   synset="ex_ss_tesla-car">
                 <MonolingualExternalRef externalSystem="cars" 
                 						externalReference="3rd row, fourth column in CSV"/>
             </Sense>
         </LexicalEntry>
 
 		        
-		<Synset id="ex_ss-electric-car">
+		<Synset id="ex_ss_electric-car">
             <Definition>
                 <TextRepresentation languageIdentifier="eng" 
                 					writtenText="A car that doesn't poison you."/>
@@ -62,13 +62,59 @@
             <MonolingualExternalRef externalSystem="cars" 
               						externalReference="7st row 2rd column in csv of origin"/>
               						
-            <SynsetRelation target="wn31_ss-n2961779" 
+            <SynsetRelation target="ex_ss_car" 
             				relType="taxonomic" 
-            				relName="hypernym"/>            				
+            				relName="hypernym"/>
+            				
+            <!-- A synset can belong to multiple domains: -->
+            <!--  internal domain: -->
+			<SynsetRelation target="ex_ss_green-energy"
+            				relType="label" 
+            				relName="domain">            	
+            <!--  we can specify how much the synset is related to a domain 
+					  by using the 'frequency' value, which ranges from 0 to 1: -->
+				<Frequency frequency="0.7" />				                			
+            </SynsetRelation>
+            				
+			<!-- external domain (transportation system) 
+			     http://wordnetweb.princeton.edu/perl/webwn?s=transportation+system&i=0 -->            				
+			<SynsetRelation target="wn31_ss_n_316812"
+            				relType="label" 
+            				relName="domain"/>
             				
         </Synset>
         
-        <Synset id="ex_ss-tesla-car">
+		<Synset id="ex_ss_green-energy">
+            <Definition>
+                <TextRepresentation languageIdentifier="eng" 
+                					writtenText="Green energy domain"/>
+            </Definition>
+
+            <MonolingualExternalRef externalSystem="cars" 
+              						externalReference="Appendix, third definition"/>
+            
+            <!--  Here we state ex_ss_green-energy  has as super domain 
+			      the root domain 'div_ss_n_domain' defined in DivUpper ontology.
+			      Notice we have specified relation 'superDomain' and don't use 'hypernym' relation
+			-->              						
+			<SynsetRelation target="div_ss_n_domain"
+            				relType="label" 
+            				relName="superDomain"/>  			            				                        				            		
+              						
+		</Synset>        
+		                      
+		<Synset id="ex_ss_car">
+            <Definition>
+                <TextRepresentation languageIdentifier="eng" 
+                					writtenText="An alternative to legs that preserves the fat in your body."/>
+            </Definition>
+
+            <MonolingualExternalRef externalSystem="cars" 
+              						externalReference="7st row 5rd column in csv of origin"/>
+              						            			
+        </Synset>        
+        
+        <Synset id="ex_ss_tesla-car">
             <Definition>
                 <TextRepresentation languageIdentifier="eng" 
                 					writtenText="A car from Tesla Motors company."/>
@@ -76,12 +122,27 @@
             <MonolingualExternalRef externalSystem="cars" 
               						externalReference="7st row 2rd column in csv of origin"/>
               						
-            <SynsetRelation target="ex_ss-electric-car"
+            <SynsetRelation target="ex_ss_electric-car"
             				relType="taxonomic" 
             				relName="hypernym"/>
+            				            
         </Synset>        
                 
-	</Lexicon>	
-	
+    </Lexicon>	
+
+	<!--  We can state a synset from this resource is aligned with the synset from
+	      another lexical resource like Wordnet
+	      
+	      For more info an alignment and status, see
+	      https://github.com/diversicon-kb/diversicon-core/issues/37
+	  -->
+    <SenseAxis id="ex_sa_ss_car_wn31_ss_car"
+    		   senseAxisType="monolingualSenseAlignment"			   
+			   synsetOne="ex_ss_car"
+			   synsetTwo="wn31_ss_n2961779"
+			   lexiconOne="div_lex_eng"
+			   lexiconTwo="wn31_lex_eng">			   
+    </SenseAxis>
+
 			  	  
 </LexicalResource>

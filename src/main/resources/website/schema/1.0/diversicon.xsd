@@ -1,5 +1,5 @@
 <!-- 
-       SCHEMA GENERATED FROM DIVERSICON DTD ON 2016-10-18
+       SCHEMA GENERATED FROM DIVERSICON DTD ON 2017-01-02
        DO *NOT* EDIT DIRECTLY.
        FOR CHANGES MADE TO ORIGINAL UBY DTD AND COPYRIGHT, SEE BELOW 
 
@@ -1086,29 +1086,25 @@
   <xs:element name="SenseAxis">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="SenseAxisRelation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SenseAxisRelation"/>
       </xs:sequence>
-      <xs:attribute name="senseAxisId" use="required" type="xs:ID"/>
+      <xs:attribute name="id" use="required" type="xs:ID"/>
       <xs:attribute name="senseAxisType"/>
-      <xs:attribute name="senseOneId"/>
-      <xs:attribute name="senseTwoId"/>
-      <xs:attribute name="synsetOneId"/>
-      <xs:attribute name="synsetTwoId"/>
+      <xs:attribute name="senseOne"/>
+      <xs:attribute name="senseTwo"/>
+      <xs:attribute name="synsetOne"/>
+      <xs:attribute name="synsetTwo"/>
       <xs:attribute name="lexiconOne"/>
       <xs:attribute name="lexiconTwo"/>
-      <xs:attribute name="metaDataId"/>
+      <xs:attribute name="metaData"/>
       <xs:attribute name="confidence"/>
-      <xs:attribute name="idx"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="SenseAxisRelation">
     <xs:complexType>
-      <xs:attribute name="senseAxisRelationId" use="required" type="xs:ID"/>
-      <xs:attribute name="relType"/>
-      <xs:attribute name="relName"/>
-      <xs:attribute name="target"/>
-      <xs:attribute name="senseAxisId" use="required"/>
-      <xs:attribute name="idx"/>
+      <xs:attribute name="relType" use="required"/>
+      <xs:attribute name="relName" use="required"/>
+      <xs:attribute name="target" use="required"/>
     </xs:complexType>
   </xs:element>
   <!--

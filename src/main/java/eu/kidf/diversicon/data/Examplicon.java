@@ -40,15 +40,6 @@ public class Examplicon extends LexResPackage {
      */
     private static final String CLASSPATH = "classpath:/" + SHORT_NAME;
     
-    /**
-     * @since 0.1.0
-     */
-    public static final String SQL_URI = CLASSPATH + ".sql";
-    
-    /**
-     * @since 0.1.0
-     */
-    public static final String H2DB_URI = CLASSPATH + ".h2.db";
     
     /**
      * @since 0.1.0
