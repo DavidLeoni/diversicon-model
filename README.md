@@ -25,15 +25,14 @@ Package with minimal dependencies to provide models for <a href="https://github.
 Includes: 
 
 - Upper lexical resource [div-upper.xml](src/main/resources/div-upper.xml)  
-- [example lexical resources](src/main/resources) smartphones.xml, examplicon.xml and bad-examplicon.xml,
-  with also [metadata in Java](src/main/java/eu/kidf/diversicon/data)
+- [example lexical resources](src/main/resources) smartphones.xml, examplicon.xml and bad-examplicon.xml, with also [metadata in Java](src/main/java/eu/kidf/diversicon/data)
 - [XML schema and DTD](src/main/resources/websitesrc/main/resources/website/schema/1.0) for Diversicon Lexical Resource LMF XML 
 
 
 #### Projects using Diversicon Model
 
 * [Diversicon Core](https://github.com/diversicon-kb/diversicon-core): Diversicon itself
-* [Diversicon Wordnet 3.1](https://github.com/diversicon-kb/diversicon-wordnet-3.1): Wordnet 3.1 packaged as Maven artifact.
+* [Diversicon Wordnet 3.1](https://github.com/diversicon-kb/diversicon-wordnet-3.1): Wordnet 3.1 packaged as Maven artifact
 
 
 #### Credits

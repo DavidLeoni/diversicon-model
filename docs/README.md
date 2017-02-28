@@ -3,7 +3,7 @@ WARNING: WORK IN PROGRESS - THIS IS ONLY A TEMPLATE FOR THE DOCUMENTATION. <br/>
 RELEASE DOCS ARE ON THE <a href="http://davidleoni.github.io/diversicon/" target="_blank">PROJECT WEBSITE</a>
 </p>
 
-This release allows to TODO. <!--If you are upgrading from previous version, see [Release notes](CHANGES.md).-->
+<!--If you are upgrading from previous version, see [Release notes](CHANGES.md).-->
 
 ### Getting started
 
