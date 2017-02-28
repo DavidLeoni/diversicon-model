@@ -656,6 +656,7 @@ relType	http://www.isocat.org/datcat/DC-1971
 
             <!--#################### Meta Classes  -->
 <!ELEMENT Frequency EMPTY>
+<!-- NOTE frequency is an integer !!!-->
 <!ATTLIST Frequency
     corpus CDATA #IMPLIED
     frequency CDATA #IMPLIED
