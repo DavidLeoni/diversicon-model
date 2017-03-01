@@ -10,9 +10,9 @@ RELEASE DOCS ARE ON THE <a href="http://davidleoni.github.io/diversicon/" target
 
 
 
-#### About Model
+#### About
 
-Package with minimal dependencies to provide models for <a href="https://github.com/diversicon-kb/diversicon-core" target="_blank">Diversicon project</a>
+Package with minimal dependencies to provide models for [Diversicon tools](http://diversicon-kb.eu/tools#java-libraries).
 
 
 |**Usage**|**License**|**Roadmap**|**Contributing**|

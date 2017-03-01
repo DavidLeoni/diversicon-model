@@ -13,7 +13,7 @@ If you use Maven as build system, put this in the `dependencies` section of your
     <dependency>
         <groupId>eu.kidf</groupId>
         <artifactId>diversicon-model</artifactId>
-        <version>#{version}</version>
+        <version>${project.version}</version>
     </dependency>
 ```
 
