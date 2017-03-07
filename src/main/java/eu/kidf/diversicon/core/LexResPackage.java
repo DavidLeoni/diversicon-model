@@ -1,6 +1,5 @@
 package eu.kidf.diversicon.core;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -101,7 +100,7 @@ public class LexResPackage {
      * The default common short prefix (like 'wn31') to identify this resource, ending with no colon, 
      * see <a href="https://www.w3.org/TR/2006/REC-xml-names11-20060816/#NT-Prefix" target="_blank">XML specs</a>.     
      *
-     * @see #getId()
+     * @see #getName()
      * @see #getLabel()
      * 
      * @since 0.1.0
